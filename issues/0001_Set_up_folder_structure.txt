@@ -1,0 +1,3 @@
+Set Up Folder Structure
+
+Richard Perez 11/18/2016  Set up the folder structure for homework and committed it to Git.
