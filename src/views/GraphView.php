@@ -5,6 +5,9 @@ error_reporting(-1);
 ini_set("display_errors", "on");
 
 require_once("View.php");
+require_once("./src/utilities/Utilities.php");
+
+use studs\hw4\utilities as u;
 
 class GraphView extends View {
   public function render($data) {
@@ -19,9 +22,10 @@ class GraphView extends View {
     <div id="graph"></div>
     <script src="src/scripts/chart.js"></script>
     <script>
-    graph = new Chart("graph", 
-    {"Jan":[7, 5], "Feb":[20, 16], "Dec":[5, 8]}, {"title":"Test Chart - Month v Value"});
-  graph.draw();
+    graph = new Chart("graph",
+    <?php echo u\chartDataToJson($data['data']); ?>
+    , {"title":"<?php echo $data['title']; ?>"});
+  graph.drawLineGraph();
     </script>
     </body>
 <?php

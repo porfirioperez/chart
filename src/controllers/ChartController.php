@@ -5,6 +5,7 @@ ini_set("display_errors", "on");
 
 require_once("./src/models/ChartModel.php");
 require_once("./src/views/GraphView.php");
+require_once("./src/views/JsonView.php");
 // require_once("./src/models/GenreModel.php");
 // require_once("./src/views/IndexView.php");
 // require_once("./src/views/WriteView.php");
@@ -55,8 +56,8 @@ class ChartController extends Controller {
     switch ($responseType) {
     case "json":
     case "jsonp":
-        // $view = new v\JsonView();
-        // $view->render($chart);
+        $view = new v\JsonView();
+        $view->render($chart);
         break;
     case "xml":
         // $view = new v\XmlView();
