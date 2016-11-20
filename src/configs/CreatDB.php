@@ -1,5 +1,6 @@
 <?php
-
+error_reporting(-1);
+ini_set("display_errors", "on");
 function initializeDB()
 {
     $config = require("Config.php");
@@ -19,11 +20,9 @@ function initializeDB()
     mysqli_stmt_execute($stmt);
 
     $stmt = mysqli_prepare($con,"CREATE TABLE Chart
-(md5 VARCHAR({$config['MAX_MD5']}) NOT NULL,
+(md5data VARCHAR({$config['MAX_MD5']}) NOT NULL,
 title VARCHAR({$config['MAX_TITLE']}) NOT NULL,
-data VARCHAR({$config['MAX_DATA']}) NOT NULL,
-PRIMARY KEY (md5),
-UNIQUE (md5)
+data VARCHAR({$config['MAX_DATA']}) NOT NULL
 );");
     mysqli_stmt_execute($stmt);
 

@@ -16,10 +16,10 @@ class IndexView extends View {
     <body>
     <h1>PasteChart</h1>
     <p>Share your data in charts!</p>
-    <form>
+    <form method="post" action="index.php">
         <label for="chart-title">Chart Title </label>
-        <input type="text" id="chart-title"></input><br><br>
-        <textarea placeholder="textlabel,value,value,....." rows="50" cols="80" required></textarea><br><br>
+        <input type="text" id="chart-title" name="chart-title"></input><br><br>
+        <textarea name="data" placeholder="textlabel,value,value,....." rows="50" cols="80" required></textarea><br><br>
         <button type="submit">Share</button>
     </form>
 
