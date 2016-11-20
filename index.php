@@ -39,6 +39,7 @@
   		$controller->respond($_REQUEST['arg1'], $_REQUEST['arg2']);
   		break;
     case "jsonp":
+echo 'arg3 = ' . $_REQUEST['arg3'];
         $controller->respond($_REQUEST['arg1'], $_REQUEST['arg2'], $_REQUEST['arg3']);
         break;
     default:

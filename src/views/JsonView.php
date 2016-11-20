@@ -20,7 +20,15 @@ class JsonView extends View {
     <body>
     <h1><?php echo $data['md5data'] . ' ' . $data['responseType'];?> - PasteChart</h1>
 
-    <div><?php echo $jsonString; ?></div>
+    <div>
+      <?php
+      if ($data['responseType'] == "jsonp") 
+        echo $data['callbackFunc'] . '(';
+      echo $jsonString;
+      if ($data['responseType'] == "jsonp") 
+        echo ');';
+      ?>
+    </div>
     
     </body>
 <?php

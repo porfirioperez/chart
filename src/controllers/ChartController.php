@@ -5,6 +5,7 @@ ini_set("display_errors", "on");
 
 require_once("./src/models/ChartModel.php");
 require_once("./src/views/GraphView.php");
+require_once("./src/views/PointGraphView.php");
 require_once("./src/views/JsonView.php");
 // require_once("./src/models/GenreModel.php");
 // require_once("./src/views/IndexView.php");
@@ -43,16 +44,22 @@ class ChartController extends Controller {
     $chartModel = new m\ChartModel();
     $chart = $chartModel->getRow($md5data);
     $chart['graphType'] = $graphType;
-    $view = new v\GraphView();
-   
-    $view->render($chart);
+    if ($graphType == 'LineGraph') {
+        $view = new v\GraphView();
+        $view->render($chart);
+    } elseif ($graphType == 'PointGraph') {
+        $view = new v\PointGraphView();
+        $view->render($chart);
+    }
   }
 
-  public function respond($responseType, $md5data, $callbackfunc = null) {
+  public function respond($responseType, $md5data, $callbackfunc) {
+echo 'entering respond $callbackFunc = ' . $callbackFunc;
     $chartModel = new m\ChartModel();
     $chart = $chartModel->getRow($md5data);
     $chart['responseType'] = $responseType;
-    $chart['callbackFunc'] = $callbackFunc;
+    //if (isset($callbackFunc))
+        $chart['callbackFunc'] = $callbackFunc;
     switch ($responseType) {
     case "json":
     case "jsonp":
